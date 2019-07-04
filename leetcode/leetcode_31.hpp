@@ -55,7 +55,7 @@ public:
     bool isLower(vector<int>& nums, int begin, int end) {
         bool ret = true;
         /// FIXED 注意边界，别越界了
-        // end - 1:注意边界，别越界了
+        // end - 1 & i + 1:注意边界，别越界了
         for (int i = begin; i < end - 1; ++i) {
             if(nums[i] < nums[i + 1]) {
                 ret = false;
