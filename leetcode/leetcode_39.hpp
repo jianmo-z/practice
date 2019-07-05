@@ -48,32 +48,53 @@ public:
         sort(candidates.begin(), candidates.end());
         vector<vector<int>> ret;
         vector<int> ans;
-        dfs(ret, candidates, ans, target);
+
+        // 当为一个值或者为空时
+        if(candidates.empty()) {
+            return ret;
+        }
+        else if(candidates.size() == 1 && (target % candidates[0] == 0)) {
+            ret.push_back(vector<int>(target / candidates[0], candidates[0]));
+            return ret;
+        }
+
+        dfs(ret, candidates, ans, 0, target);
         return ret;
     }
 
-    void dfs(vector<vector<int>> &ret, vector<int> &candidates, vector<int> ans, int target) {
+    void dfs(vector<vector<int>> &ret, vector<int> &candidates, vector<int> ans, int index, int target) {
         if (target == 0) {
             ret.push_back(ans);
+            return;
+        }
+        if(target < candidates[index]) {
+            return;
         }
 
-        for (auto it:candidates) {
-            if (target < it) {
-                return;
-            }
+        // 选择当前值
+        {
             auto tmp = ans;
-            tmp.push_back(it);
-            dfs(ret, candidates, tmp, target - it);
+            tmp.push_back(candidates[index]);
+            dfs(ret, candidates, tmp, index, target - candidates[index]);
         }
+
+        // 不选择当前值
+        if ((index + 1) < candidates.size()) {
+            auto tmp = ans;
+            dfs(ret, candidates, tmp, index + 1, target);
+        }
+
 
     }
 
 };
 
+
+
 void test() {
     Solution s;
-    vector<int> candidates{2, 3, 4};
-    int target = 7;
+    vector<int> candidates{2, 3, 5};
+    int target = 8;
     auto ret = s.combinationSum(candidates, target);
     for (auto i:ret) {
         for (auto j:i) {

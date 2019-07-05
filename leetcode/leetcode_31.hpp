@@ -27,10 +27,7 @@ public:
         if (nums.size() <= 1) {
             return;
         }
-//        } else if(nums.size() == 2) {
-//            swap(nums[0], nums[1]);
-//            return;
-//        }
+
 
         if(this->isLower(nums, 0, nums.size())) {
             // 降序 ---> 最大值 ---> 排序为升序
