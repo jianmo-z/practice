@@ -35,37 +35,26 @@ public:
         vector<vector<int>> ret(0);
         sort(nums.begin(), nums.end());
 
-        if(nums.size() >= 2){
+        if (nums.size() >= 2) {
             func(ret, nums, 0);
-        }else{
+        } else {
             ret.push_back(nums);
         }
 
         return ret;
     }
 
-    void func(vector<vector<int>> &ret ,vector<int> nums, int size) {
+    void func(vector<vector<int>> &ret, vector<int> nums, int size) {
 
         // 剩下两个元素
         if (nums.size() - size == 2) {
             ret.push_back(nums);
-//            if(nums[nums.size() - 1] != nums[nums.size() - 2]){
-//                swap(nums[nums.size() - 1], nums[nums.size() - 2]);
-//                ret.push_back(nums);
-//            }
-
             swap(nums[nums.size() - 1], nums[nums.size() - 2]);
             ret.push_back(nums);
         } else {
             for (int i = size; i < nums.size(); ++i) {
                 vector<int> tmp(nums);
-
-//                if(tmp[size] != tmp[i] || size == i){
-//                    swap(tmp[size], tmp[i]);
-//                    func(ret, tmp, size + 1);
-//                }
-
-                if(size != i){
+                if (size != i) {
                     swap(tmp[size], tmp[i]);
                 }
                 func(ret, tmp, size + 1);
@@ -80,7 +69,7 @@ void test() {
     vector<int> nums = {1, 3, 3};
     Solution s;
     auto ret = s.permute(nums);
-    for(auto i : ret) {
+    for (auto i : ret) {
         for (int j : i) {
             cout << j << " ";
         }

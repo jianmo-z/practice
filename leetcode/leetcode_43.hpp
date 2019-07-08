@@ -13,15 +13,17 @@ using namespace std;
 class Solution {
 public:
     string multiply(string num1, string num2) {
-        // 一个参数为空
+        //// 检验参数
         if(num1.empty() || num2.empty()) {
             return num1.empty() ? num2 : num1;
         }
 
+        /// 存储中间变量
         vector<string> middle;
         int num = 0;
 
 
+        /// 循环遍历一个数，让 多位数*多位数 变为 多位数*一位数
         for(auto it = num1.rbegin(); it != num1.rend(); ++it, ++num) {
             middle.push_back(this->multiply_one(num2, *it, num));
             if(middle.size() == 2) {
@@ -39,7 +41,8 @@ public:
         return middle[0];
     }
 
-    // 两个字符串之和
+    /// @brief 大数相加
+    /// 两个大数据字符串按照每一位相加，从后往前加
     void add(string &num1, string &num2) {
         if(num1.length() < num2.length()) {
             swap(num1, num2);
@@ -68,10 +71,13 @@ public:
 
     }
 
-    // 一个数加1
 
-
-    // 一个数乘以一个多位数
+    /**
+     * @brief 多位数*一位数：个位数和多位数相乘
+     * @param num1 多位数
+     * @param num2 个位数
+     * @param num 个位数的权值，num2*10^num，如num2=4,num=2，为4*10^2
+     * */
     string multiply_one(string num1, char num2, int num) {
         int carry = 0;
         string ret = num1;
