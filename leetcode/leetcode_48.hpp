@@ -38,14 +38,54 @@ using namespace std;
 
 class Solution {
 public:
-    // 1.x,y <=> y,x
-    // 2.再做关于y轴对称
-    void rotate(vector<vector<int>>& matrix) {
-        int x = 0, y = 0;
-        int sum = matrix.size() * matrix.size();
-        int weight = matrix.size();
-        for(int i = 0; i * 2 < sum; ++i) {
 
+    // 方法一
+    void rotate(vector<vector<int>>& matrix) {
+        int x1 = 0, y1 = 0;
+        int x2 = 0, y2 = 0;
+        int weight = matrix.size();
+
+/// 矩阵一
+// {1,2,3}
+// {4,5,6}
+// {7,8,9}
+        for (int i = 0; i < weight; ++i) {
+            for(int j = 0; j < i; ++j) {
+                x1 = weight - i - 1;
+                y1 = j;
+                x2 = weight - 1 - y1;
+                y2 = weight - 1 - x1;
+                swap(matrix[x1][y1], matrix[x2][y2]);
+            }
+        }
+/// 矩阵二
+//{9,6,3}
+//{8,5,2}
+//{7,4,1}
+        for(int i = 0; i < weight/ 2; ++i) {
+            swap(matrix[i], matrix[weight - 1 -i]);
+        }
+
+/// 矩阵三
+//{7,4,1}
+//{8,5,2}
+//{9,6,3}
+    }
+
+
+    // 方法二
+    void rotate2(vector<vector<int>>& matrix) {
+        int weight = matrix.size();
+
+        for (int i = 0; i < weight / 2; ++i) {
+            swap(matrix[i], matrix[weight - 1 -i]);
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
+
+        for(int i = 0; i < weight; ++i) {
+            for (int j = 0; j < i; ++j) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
         }
     }
 
@@ -58,8 +98,9 @@ void test() {
         {7,8,9}
     };
 
+
     Solution s;
-    s.rotate(matirx);
+    s.rotate2(matirx);
     for(auto i:matirx) {
         for(auto j:i) {
             cout << j << " ";
