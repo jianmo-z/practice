@@ -23,35 +23,32 @@ using namespace std;
  * */
 class Solution {
 public:
-    bool canJump(vector<int>& nums) {
-        bool ret = false;
-        this->jump(nums, 0, 0, ret);
-        return ret;
-    }
-    void jump(vector<int>& nums, int current_pos, int steps,  bool &arrived) {
-        if(-1 == steps) {  // 递归出口
-            return;
-        } else if(steps >= nums.size() - current_pos) {
-            arrived = true;
-        }
-        // 已经到达不需要再递归
-        if(arrived) {
-            return;
-        }
-        // 选择当前数
-        jump(nums, current_pos + 1, nums[current_pos] - 1, arrived);
+    // https://www.cnblogs.com/grandyang/p/4371526.html
+    // 所以当前位置的剩余步数（dp值）和当前位置的跳力中的较大那个数决定了当前能到的最远距离，
+    // 而下一个位置的剩余步数（dp值）就等于当前的这个较大值减去1，因为需要花一个跳力到达下一
+    // 个位置。
 
-        // 不选择下一个数,当steps==0时必须选择当前数字
-        if(steps > 0) {
-            jump(nums, current_pos + 1, steps - 1, arrived);
+    bool canJump(vector<int>& nums) {
+        bool ret = true;
+        if(nums.size() <= 1) {
+            return ret;
         }
+        vector<int> dp(nums.size(), 0);
+        for(int i = 0; i< nums.size() - 1; ++i) {
+            dp[i] = max(dp[i - 1], nums[i - 1]) - 1;
+            if(dp[i] < 0) {
+                ret = false;
+                break;
+            }
+        }
+        return ret;
     }
 
 };
 
 void test() {
 //    vector<int> nums{2,3,1,1,4};
-    vector<int> nums{2, 4, 0, 0};
+    vector<int> nums{0};
     Solution s;
     cout << s.canJump(nums);
 }
