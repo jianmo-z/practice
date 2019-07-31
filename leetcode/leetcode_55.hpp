@@ -24,6 +24,8 @@ using namespace std;
 class Solution {
 public:
     // https://www.cnblogs.com/grandyang/p/4371526.html
+    // dp[i + 1] = max(当前位置的剩余步数(dp), 当前位置的跳力(nums))
+
     // 所以当前位置的剩余步数（dp值）和当前位置的跳力中的较大那个数决定了当前能到的最远距离，
     // 而下一个位置的剩余步数（dp值）就等于当前的这个较大值减去1，因为需要花一个跳力到达下一
     // 个位置。

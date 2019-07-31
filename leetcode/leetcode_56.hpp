@@ -2,13 +2,19 @@
  * ***  永远不要相信任何传进来的参数 ***
  * 
  * 文件: leetcode_56
+<<<<<<< Updated upstream
  * 时间: 2019/7/30-15:23
  * 作者: zhanghui05
+=======
+ * 时间: 7/25/19-9:18 PM
+ * 作者: pip
+>>>>>>> Stashed changes
  */
 
 #include <bits/stdc++.h>
 
 using namespace std;
+<<<<<<< Updated upstream
 /**
  * Input: [[1,3],[2,6],[8,10],[15,18]]
  * Output: [[1,6],[8,10],[15,18]]
@@ -67,10 +73,17 @@ public:
         }
         return ret;
     }
+=======
+
+class Solution {
+public:
+
+>>>>>>> Stashed changes
 
 };
 
 void test() {
+<<<<<<< Updated upstream
     vector<vector<int>> intervals;
     vector<int> v1 {1, 3};
     vector<int> v2 {2, 6};
@@ -90,4 +103,8 @@ void test() {
         cout << endl;
     }
 
+=======
+    Solution s;
+    cout << "hello world" << endl;
+>>>>>>> Stashed changes
 }
