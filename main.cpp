@@ -1,6 +1,5 @@
-#include "leetcode/leetcode_91.hpp"
-//#include "alibaba/parctice.hpp"
-#include <bits/stdc++.h>
+//#include "leetcode/leetcode_91.hpp"
+#include "huawei/practice_1.hpp"
 
 using namespace std;
 
