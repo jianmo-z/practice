@@ -17,9 +17,10 @@ int test1() {
     int pos = -1;
     scanf("%d", &num);
     for (int i = 0; i < 30; ++i, n<<=1) {
-        if (n > num) {
-            break;
-        }
+// 自作多情的优化(此处优化有问题)
+//        if (n > num) {
+//            break;
+//        }
 
         if ((n & num) == n) {
             ++times;
