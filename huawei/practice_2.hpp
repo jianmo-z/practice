@@ -10,5 +10,32 @@
 
 using namespace std;
 
-void test() {
+
+int test() {
+    string str;
+    vector<string> v;
+    string tmp;
+    bool con = true;
+
+    cin >> str;
+
+    // v = MySplit(str, ",\"");
+    for (int i = 0; i < str.length(); ++i) {
+        if(str[i] == ',') {
+            v.push_back(move(tmp));
+        } else {
+            tmp += str[i];
+        }
+    }
+    v.push_back(tmp);
+
+    vector<string> ret;
+    for (int j = 0; j < v.size() - 1; ++j) {
+        if (v[j + 1][0] == '\"') {
+            tmp += v[j];
+        } else{
+
+        }
+    }
+    return 0;
 }
