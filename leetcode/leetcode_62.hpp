@@ -15,28 +15,43 @@ using namespace std;
  * 解题思路：
  */
 
-class Solution {
-public:
-    map<pair<int, int>, int> mem;
-    int dp(int x, int y) {
-        if (x <= 0 || y <= 0) {
-            return 0;
-        } else if(x == 1 || y == 1) {
-            return 1;
-        }
-        auto key = make_pair(x, y);
-        if (!mem[key]) {
-            mem[key] = dp(x - 1, y) + dp(x, y - 1);
-        }
+namespace TopDown{
+    class Solution {
+    public:
+        map<pair<int, int>, int> mem;
 
-        return mem[key];
-    }
-    int uniquePaths(int m, int n) {
-        return dp(m, n);
-    }
-};
+        // 自顶向下
+        int dp(int x, int y) {
+            if (x <= 0 || y <= 0) {
+                return 0;
+            } else if(x == 1 || y == 1) {
+                return 1;
+            }
+            auto key = make_pair(x, y);
+            if (!mem[key]) {
+                mem[key] = dp(x - 1, y) + dp(x, y - 1);
+            }
 
+            return mem[key];
+        }
+        int uniquePaths(int m, int n) {
+            return dp(m, n);
+        }
+    };
+}
+
+namespace ButtomUp{
+    class Solution {
+    public:
+
+        int uniquePaths(int m, int n) {
+            vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+            dp[1][1] = 0;
+            return dp[m][n];
+        }
+    };
+}
 void test() {
-    Solution s;
+    ButtomUp::Solution s;
     cout << s.uniquePaths(7, 3) << endl;
 }
