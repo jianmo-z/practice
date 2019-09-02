@@ -12,7 +12,7 @@ using namespace std;
 
 /**
  * 问题链接：https://leetcode.com/problems/flip-string-to-monotone-increasing/
- * 解题思路：
+ * 解题思路：https://www.youtube.com/watch?v=3mY5W0yojtA&t=1036s
  */
 
 class Solution {
