@@ -12,7 +12,6 @@ public:
 		int max = nums[0], cursum = 0;
 		for(int &i: nums) {
 			cursum += i;
-			cout << cursum << " ";
 			if(cursum > max){
 				max = cursum;
 			}
@@ -22,10 +21,21 @@ public:
 		}
 		return max;
 	}
+
+	// 动态规划的方式:DP
+    int maxSubArray1(vector<int>& nums) {
+        vector<int> res(nums.size(), 0);
+
+        res[0] = nums[0];
+        for (int i = 1; i < nums.size(); ++i) {
+            res[i] = res[i - 1] > 0 ? nums[i] + res[i - 1] : nums[i];
+        }
+        return *max_element(res.begin(), res.end());
+	}
 };
 
 void test() {
 	vector<int> nums {-2,1,-3,4,-1,2,1,-5,4};
 	Solution s;
-	cout << "max:" << s.maxSubArray(nums) << endl;
+	cout << s.maxSubArray1(nums) << endl;
 }
