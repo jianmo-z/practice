@@ -39,9 +39,6 @@ using namespace std;
  *
  * */
 
-/// TODO 重复计算 且 太多结果重复
-/// FIXME 需要进行优化
-
 class Solution {
 public:
     vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
