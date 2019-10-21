@@ -23,7 +23,6 @@ void test_01() {
 	} else if (x == 0 || y == 0) {
 		sum = 0;
 	} else {
-		// bool (*v)[int(y)] = new bool [int(x)][int(y)];
 		bool ** v;
 		v = new bool *[int(x)];
 		for(int i = 0; i < x; ++i) {

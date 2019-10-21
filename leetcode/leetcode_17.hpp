@@ -5,10 +5,10 @@
 
 using namespace std;
 
-/*
+/* 问题链接：https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+ *
  * Input: "23"
  * Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
- *
  * */
 
 class Solution {
@@ -27,7 +27,7 @@ public:
             return ret;
         }
 
-        list <string> str;
+        list<string> str;
         for (char n : digits) {
             str.push_back(this->getStr(n));
         }
@@ -70,7 +70,7 @@ public:
         return ret;
     }
 
-    void func(vector<string> &ret, const string &str, list <string> l) {
+    void func(vector<string> &ret, const string &str, list<string> l) {
         if (l.empty()) {
             ret.push_back(str);
         } else {
@@ -80,15 +80,13 @@ public:
                 this->func(ret, str + it, l);
             }
         }
-
-
     }
 
 };
 
 void test() {
     Solution s;
-    for (const auto &it:s.letterCombinations("2")) {
+    for (const auto &it:s.letterCombinations("23")) {
         cout << it << " ";
     }
 }
