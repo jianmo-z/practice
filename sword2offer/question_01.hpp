@@ -1,9 +1,9 @@
-/* *** ������д���˿���˳���û���ִ�� ***
- * ***  ��Զ��Ҫ�����κδ������Ĳ��� ***
+/* *** 代码是写给人看，顺带让机器执行 ***
+ * ***  永远不要相信任何传进来的参数 ***
  * 
- * �ļ�: question_01.hpp
- * ʱ��: 2020/4/15-20:06
- * ����: Pip
+ * 文件: question_01.hpp
+ * 时间: 2020/4/15-20:06
+ * 作者: Pip
  */
 
 #include <bits/stdc++.h>
@@ -28,16 +28,16 @@ public:
     }
 
     CMyString &operator=(const CMyString &str) {
-        // �ж��Ƿ����Ը�ֵ
+        // 判断是否是自赋值
         if (&str != this) {
-            // ��ʱ����
+            // 临时对象
             CMyString tempStr(str);
 
-            // ����ʱ����͵�ǰ�����ʵ�����н�������ʱ��������ʱҲ���ͷ���Դ
+            // 把临时对象和当前对象的实例进行交换，临时对象析构时也会释放资源
             std::swap(this->m_data, tempStr.m_data);
         }
 
-        // ��ʽ���������ֵ
+        // 链式编程连续赋值
         return *this;
     }
 
@@ -50,7 +50,6 @@ public:
         if (nullptr != this->m_data) {
             delete[] this->m_data;
         }
-
     }
 
 private:
@@ -58,25 +57,25 @@ private:
 };
 
 int test() {
-    // ����
+    // 测试
     CMyString c1("hello c1");
     CMyString c2;
     CMyString c3;
     CMyString c4;
 
-    // ���Դ�ӡ����
+    // 测试打印对象
     cout << "c1:" <<c1 << endl;
 
-    // ��һ��ʵ����ֵ����һ��ʵ��
+    // 把一个实例赋值给另一个实例
     c2 = c1;
     cout << "c1:" << c1 << endl;
     cout << "c2:" << c2 << endl;
 
-    // ��ֵ���Լ�
+    // 赋值给自己
     c1 = c1;
     cout << "c1:" << c1 << endl;
 
-    // ������ֵ
+    // 连续赋值
     c4 = c3 = c2 = c1;
 
     cout << "c1:" << c1 << endl;
