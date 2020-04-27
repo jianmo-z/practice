@@ -61,7 +61,6 @@ string replackBlank02(string str) {
     return str;
 }
 
-
 TEST(question_04, replackBlank01) {
     EXPECT_STREQ(replackBlank01(" hello world ").data(), "%20hello%20world%20");
     EXPECT_STREQ(replackBlank01("").data(), "");
