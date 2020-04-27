@@ -1,8 +1,6 @@
-//#include "leetcode/leetcode_17.hpp"
-// #include "huawei/practice_6.hpp"
 #include <bits/stdc++.h>
-#include "sword2offer/question_04.hpp"
 #include "gtest/gtest.h"
+#include "sword2offer/question_04.hpp"
 
 using namespace std;
 
@@ -12,8 +10,9 @@ using namespace std;
 //    return 0;
 //}
 
-int main(int argc, char *argv[])
+GTEST_API_ int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
+

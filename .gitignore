@@ -8,3 +8,5 @@
 cmake-build-debug
 out
 gen
+.idea/workspace.xml
+googletest/
