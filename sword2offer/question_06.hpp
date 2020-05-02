@@ -66,6 +66,7 @@ private:
         node->data = preOrder[0];
         auto rootIndex = std::find(midOrder.begin(), midOrder.end(), preOrder[0]);
         auto preOrderEnd = std::next(preOrder.begin(), std::distance(midOrder.begin(), rootIndex) + 1);
+
         // 构建左子树
         node->left = _rebuildBinaryTree(vector<int>(preOrder.begin() + 1, preOrderEnd),
                                         vector<int>(midOrder.begin(), rootIndex));
