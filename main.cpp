@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 #include "gtest/gtest.h"
-#include "sword2offer/question_05.hpp"
+#include "sword2offer/question_06.hpp"
 
 using namespace std;
 
