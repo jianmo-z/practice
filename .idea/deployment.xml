@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="CentOS (d2401442-35c8-4fc4-986c-93eaaef1f056)">
+  <component name="PublishConfigData" autoUpload="Always" serverName="CentOS (d2401442-35c8-4fc4-986c-93eaaef1f056)" showAutoUploadSettingsWarning="false">
     <serverData>
       <paths name="CentOS (d2401442-35c8-4fc4-986c-93eaaef1f056)">
         <serverdata>
@@ -18,6 +18,17 @@
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
+        </serverdata>
+      </paths>
+      <paths name="ali-zhangwei (86fe29fe-4795-4e23-990b-a812ff3d75db)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.ybWa2QQZ1g" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
