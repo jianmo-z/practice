@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(GOOGLETEST_VERSION 1.9.0)
 
 set(LIBRARIES gtest gtest_main pthread)
-set(SOURCE_FILES main.cpp fff.cpp df.h sd.h ff.h)
+set(SOURCE_FILES main.cpp test/01test.hpp)
 
 # 编译google test
 add_subdirectory(./googletest)
