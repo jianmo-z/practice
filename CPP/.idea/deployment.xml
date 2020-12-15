@@ -1,37 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="CentOS (d2401442-35c8-4fc4-986c-93eaaef1f056)" showAutoUploadSettingsWarning="false">
+  <component name="PublishConfigData">
     <serverData>
-      <paths name="CentOS (d2401442-35c8-4fc4-986c-93eaaef1f056)">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/root/practice" local="$PROJECT_DIR$" />
-          </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-          </excludedPaths>
-        </serverdata>
-      </paths>
-      <paths name="Remote GDB Server (68d169d2-74eb-4ca4-a6ce-bd01b2754d86)">
+      <paths name="CentOS (b2016c5c-5e66-48f8-ac72-e19965c3f675)">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="ali-zhangwei (86fe29fe-4795-4e23-990b-a812ff3d75db)">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/tmp/tmp.ybWa2QQZ1g" local="$PROJECT_DIR$" />
-          </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-          </excludedPaths>
-        </serverdata>
-      </paths>
     </serverData>
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

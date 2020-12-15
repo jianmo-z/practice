@@ -10,6 +10,7 @@ set(SOURCE_FILES
         nowcode/SortSingleLinkList.cpp
         comm/ListNode.cpp
         leetcodeEditor/leetcode/editor/cn/49_GroupAnagrams.cpp
+        leetcodeEditor/leetcode/editor/cn/738_MonotoneIncreasingDigits.cpp
         )
 
 # 编译google test

@@ -1,2 +1,9 @@
-CPP\.idea
-Java\.idea
+CPP/.idea/
+Java/.idea/
+CPP/./.idea/*
+CPP/./.idea
+CPP/cmake-build-debug
+CPP/out
+CPP/gen
+CPP/.idea/workspace.xml
+CPP/googletest/
