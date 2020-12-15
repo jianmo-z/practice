@@ -33,49 +33,51 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-public:
-    int monotoneIncreasingDigits(int N) {
-        char num[11] = "";
+namespace MonotoneIncreasingDigits {
+    class Solution {
+    public:
+        int monotoneIncreasingDigits(int N) {
+            char num[11] = "";
 
-        int len = 0;
+            int len = 0;
 
-        // itoa
-        while (N > 0) {
-            num[len] = N % 10 + '0';
-            N /= 10;
-            ++len;
-        }
-        reverse(num, num + len);
+            // itoa
+            while (N > 0) {
+                num[len] = N % 10 + '0';
+                N /= 10;
+                ++len;
+            }
+            reverse(num, num + len);
 
-        for (int i = 0; i < len - 1; ++i) {
-            if (num[i] > num[i + 1]) {
-                --num[i];
-                for (int j = i + 1; j < len; ++j) {
-                    num[j] = '9';
-                }
+            for (int i = 0; i < len - 1; ++i) {
+                if (num[i] > num[i + 1]) {
+                    --num[i];
+                    for (int j = i + 1; j < len; ++j) {
+                        num[j] = '9';
+                    }
 
-                if (i > 0) {
-                    i = i - 2;  // 因为++i
-                } else {
-                    break;
+                    if (i > 0) {
+                        i = i - 2;  // 因为++i
+                    } else {
+                        break;
+                    }
                 }
             }
-        }
 
-        int ret = 0;
-        for (int i = 0; i < len; ++i) {
-            ret = ret * 10 + num[i] - '0';
+            int ret = 0;
+            for (int i = 0; i < len; ++i) {
+                ret = ret * 10 + num[i] - '0';
+            }
+            return ret;
         }
-        return ret;
-    }
-};
+    };
 //leetcode submit region end(Prohibit modification and deletion)
-
-
-TEST(MonotoneIncreasingDigits, test01) {
-    Solution s;
-    ASSERT_EQ(s.monotoneIncreasingDigits(12342), 12339);
-    ASSERT_EQ(s.monotoneIncreasingDigits(2333332), 2299999);
-    ASSERT_EQ(s.monotoneIncreasingDigits(1234321), 1233999);
+    TEST(MonotoneIncreasingDigits, test01) {
+        Solution s;
+        ASSERT_EQ(s.monotoneIncreasingDigits(12342), 12339);
+        ASSERT_EQ(s.monotoneIncreasingDigits(2333332), 2299999);
+        ASSERT_EQ(s.monotoneIncreasingDigits(1234321), 1233999);
+    }
 }
+
+
