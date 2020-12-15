@@ -3,9 +3,5 @@
 ### Example user template
 
 # IntelliJ project files
-.idea/
-cmake-build-debug
+.idea
 out
-gen
-.idea/workspace.xml
-googletest/
