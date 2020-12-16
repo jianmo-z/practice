@@ -25,15 +25,13 @@
 // 👍 151 👎 0
 
 
+#include <bits/stdc++.h>
 #include "../googletest/include/gtest/gtest.h"
 
-
 //leetcode submit region begin(Prohibit modification and deletion)
-#include <cstdlib>
-#include <bits/stdc++.h>
-using namespace std;
-
 namespace MonotoneIncreasingDigits {
+    using namespace std;
+
     class Solution {
     public:
         int monotoneIncreasingDigits(int N) {
