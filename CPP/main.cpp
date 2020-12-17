@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 #include "gtest/gtest.h"
 //#include "sword2offer/question_07.hpp"
-#include "test/01test.hpp"
 
 using namespace std;
 
 
 //int main() {
-//    test();
+//    practice();
 //    return 0;
 //}
 

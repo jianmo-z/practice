@@ -11,9 +11,12 @@ set(SOURCE_FILES
         comm/ListNode.cpp
         leetcodeEditor/leetcode/editor/cn/49_GroupAnagrams.cpp
         leetcodeEditor/leetcode/editor/cn/738_MonotoneIncreasingDigits.cpp
+        leetcodeEditor/leetcode/editor/cn/42_TrappingRainWater.cpp
+        leetcodeEditor/leetcode/editor/cn/146_LruCache.cpp
+        practice/02test.cpp
         )
 
-# 编译google test
+# 编译google practice
 add_subdirectory(./googletest)
 # 把google test的头文件添加到include路径中
 include_directories(./googletest/include)
