@@ -13,6 +13,8 @@ set(SOURCE_FILES
         leetcodeEditor/leetcode/editor/cn/738_MonotoneIncreasingDigits.cpp
         leetcodeEditor/leetcode/editor/cn/42_TrappingRainWater.cpp
         leetcodeEditor/leetcode/editor/cn/146_LruCache.cpp
+        leetcodeEditor/leetcode/editor/cn/402_RemoveKDigits.cpp
+        leetcodeEditor/leetcode/editor/cn/316_RemoveDuplicateLetters.cpp
         practice/02test.cpp
         )
 
