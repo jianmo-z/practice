@@ -15,6 +15,9 @@ set(SOURCE_FILES
         leetcodeEditor/leetcode/editor/cn/146_LruCache.cpp
         leetcodeEditor/leetcode/editor/cn/402_RemoveKDigits.cpp
         leetcodeEditor/leetcode/editor/cn/316_RemoveDuplicateLetters.cpp
+        leetcodeEditor/leetcode/editor/cn/239_SlidingWindowMaximum.cpp
+        leetcodeEditor/leetcode/editor/cn/15_ThreeSum.cpp
+        leetcodeEditor/leetcode/editor/cn/205_IsomorphicStrings.cpp
         practice/02test.cpp
         )
 
