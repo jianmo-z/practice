@@ -44,7 +44,7 @@ namespace RemoveKDigits {
 class Solution {
 public:
     string removeKdigits(string num, int k) {
-
+        return "";
     }
 };
 //leetcode submit region end(Prohibit modification and deletion)

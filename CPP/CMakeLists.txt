@@ -4,21 +4,13 @@ project(practice)
 set(CMAKE_CXX_STANDARD 11)
 set(GOOGLETEST_VERSION 1.9.0)
 
-set(LIBRARIES gtest gtest_main pthread)
+set(LIBRARIES gtest gtest_main)
 set(SOURCE_FILES
         main.cpp
         nowcode/SortSingleLinkList.cpp
         comm/ListNode.cpp
-        leetcodeEditor/leetcode/editor/cn/49_GroupAnagrams.cpp
-        leetcodeEditor/leetcode/editor/cn/738_MonotoneIncreasingDigits.cpp
-        leetcodeEditor/leetcode/editor/cn/42_TrappingRainWater.cpp
-        leetcodeEditor/leetcode/editor/cn/146_LruCache.cpp
-        leetcodeEditor/leetcode/editor/cn/402_RemoveKDigits.cpp
-        leetcodeEditor/leetcode/editor/cn/316_RemoveDuplicateLetters.cpp
-        leetcodeEditor/leetcode/editor/cn/239_SlidingWindowMaximum.cpp
-        leetcodeEditor/leetcode/editor/cn/15_ThreeSum.cpp
-        leetcodeEditor/leetcode/editor/cn/205_IsomorphicStrings.cpp
-        practice/02test.cpp
+        leetcodeEditor/leetcode/editor/cn/179_LargestNumber.cpp
+        practice/07test.cpp
         )
 
 # 编译google practice

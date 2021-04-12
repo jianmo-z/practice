@@ -5,7 +5,7 @@
       <paths name="CentOS (b2016c5c-5e66-48f8-ac72-e19965c3f675)">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/tmp/CPP" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
