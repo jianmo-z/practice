@@ -44,7 +44,8 @@
 
 
 #include <bits/stdc++.h>
-#include "../googletest/include/gtest/gtest.h"
+//#include "../googletest/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 namespace LargestNumber {
     using namespace std;
