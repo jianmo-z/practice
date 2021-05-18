@@ -14,11 +14,11 @@ set(SOURCE_FILES
         )
 
 # 编译google practice
-add_subdirectory(./googletest)
+add_subdirectory(./googletest/googletest)
 # 把google test的头文件添加到include路径中
-include_directories(./googletest/include)
+include_directories(./googletest/googletest/include)
 # 将libtest.a添加到连接路径中
-link_directories(./googletest)
+link_directories(./googletest/googletest)
 
 
 add_executable(practice ${SOURCE_FILES})
