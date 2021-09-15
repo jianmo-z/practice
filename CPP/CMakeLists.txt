@@ -7,7 +7,8 @@ set(GOOGLETEST_VERSION 1.9.0)
 set(LIBRARIES gtest gtest_main)
 set(SOURCE_FILES
         main.cpp
-        leetcodeEditor/leetcode/editor/cn/179_LargestNumber.cpp
+        # leetcodeEditor/leetcode/editor/cn/179_LargestNumber.cpp
+        leetcodeEditor/leetcode/editor/cn/226_InvertBinaryTree.cpp
         )
 
 
@@ -20,4 +21,4 @@ link_directories(./googletest)
 
 
 add_executable(practice ${SOURCE_FILES})
-target_link_libraries(practice  ${LIBRARIES})
+target_link_libraries(practice ${LIBRARIES})
