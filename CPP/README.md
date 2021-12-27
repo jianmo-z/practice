@@ -6,7 +6,7 @@
 
 * 标题
 
-  ```json
+  ```
   $!{question.frontendQuestionId}_$!velocityTool.camelCaseName(${question.titleSlug})
   ```
 
