@@ -8,7 +8,7 @@ set(LIBRARIES gtest gtest_main)
 set(SOURCE_FILES
         main.cpp
         # leetcodeEditor/leetcode/editor/cn/179_LargestNumber.cpp
-        leetcodeEditor/leetcode/editor/cn/226_InvertBinaryTree.cpp
+         leetcodeEditor/leetcode/editor/cn/121_BestTimeToBuyAndSellStock.cpp
         )
 
 
