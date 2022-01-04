@@ -1,5 +1,7 @@
 from typing import *
 from functools import *
+import sys
+
 
 # 路径 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不
 # 一定经过根节点。 
@@ -40,6 +42,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 # leetcode submit region begin(Prohibit modification and deletion)
 # Definition for a binary tree node.
 # class TreeNode:
@@ -50,9 +53,21 @@ class TreeNode:
 
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        pass
-# leetcode submit region end(Prohibit modification and deletion)
+        self.maxNum = -sys.maxsize
 
+        def dp(root: Optional[TreeNode]):
+            if not root:
+                return -sys.maxsize
+            left_sum = max(0, dp(root.left))
+            right_sum = max(0, dp(root.right))
+            self.maxNum = max(self.maxNum, root.val + left_sum + right_sum)
+            return root.val + max(left_sum, right_sum)
+
+        dp(root)
+        return self.maxNum
+
+
+# leetcode submit region end(Prohibit modification and deletion)
 
 
 def test_solution():

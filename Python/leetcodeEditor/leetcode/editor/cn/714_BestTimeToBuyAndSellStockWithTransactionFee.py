@@ -62,7 +62,7 @@ class Solution:
                 balance + prices[i] - fee  # buy stock
             ), max(
                 balance,  # do nothing
-                profit - prices[i]
+                profit - prices[i]  # sell stock
             )
 
         return dp(len(prices) - 1)[0]
