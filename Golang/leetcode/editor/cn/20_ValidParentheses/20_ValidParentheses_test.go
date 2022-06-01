@@ -92,6 +92,7 @@ func isValid(s string) bool {
 //leetcode submit region end(Prohibit modification and deletion)
 
 func TestValidParentheses(t *testing.T) {
+	assert.True(t, isValid(""))
 	assert.True(t, isValid("()"))
 	assert.True(t, isValid("()[]{}"))
 	assert.False(t, isValid("(]"))
