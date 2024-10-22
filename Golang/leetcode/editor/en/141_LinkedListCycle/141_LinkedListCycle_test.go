@@ -1,81 +1,79 @@
-package LinkedListCycle
+package leetcode
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-//给你一个链表的头节点 head ，判断链表中是否有环。
-//
-// 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到
-//链表中的位置（索引从 0 开始）。注意：pos 不作为参数进行传递 。仅仅是为了标识链表的实际情况。
-//
-// 如果链表中存在环 ，则返回 true 。 否则，返回 false 。
-//
-//
-//
-// 示例 1：
-//
-//
-//
-//
-//输入：head = [3,2,0,-4], pos = 1
-//输出：true
-//解释：链表中有一个环，其尾部连接到第二个节点。
-//
-//
-// 示例 2：
-//
-//
-//
-//
-//输入：head = [1,2], pos = 0
-//输出：true
-//解释：链表中有一个环，其尾部连接到第一个节点。
-//
-//
-// 示例 3：
-//
-//
-//
-//
-//输入：head = [1], pos = -1
-//输出：false
-//解释：链表中没有环。
-//
-//
-//
-//
-// 提示：
-//
-//
-// 链表中节点的数目范围是 [0, 10⁴]
-// -10⁵ <= Node.val <= 10⁵
-// pos 为 -1 或者链表中的一个 有效索引 。
-//
-//
-//
-//
-// 进阶：你能用 O(1)（即，常量）内存解决此问题吗？
-// Related Topics 哈希表 链表 双指针 👍 1510 👎 0
+/*
+ * @lc app=leetcode.cn id=141 lang=golang
+ *
+ * [141] Linked List Cycle
+ *
+ * https://leetcode.cn/problems/linked-list-cycle/description/
+ *
+ * algorithms
+ * Easy (52.87%)
+ * Likes:    2210
+ * Dislikes: 0
+ * Total Accepted:    1.4M
+ * Total Submissions: 2.6M
+ * Testcase Example:  '[3,2,0,-4]\n1'
+ *
+ * Given head, the head of a linked list, determine if the linked list has a
+ * cycle in it.
+ *
+ * There is a cycle in a linked list if there is some node in the list that can
+ * be reached again by continuously following the next pointer. Internally, pos
+ * is used to denote the index of the node that tail's next pointer is
+ * connected to. Note that pos is not passed as a parameter.
+ *
+ * Return true if there is a cycle in the linked list. Otherwise, return
+ * false.
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: head = [3,2,0,-4], pos = 1
+ * Output: true
+ * Explanation: There is a cycle in the linked list, where the tail connects to
+ * the 1st node (0-indexed).
+ *
+ *
+ * Example 2:
+ *
+ *
+ * Input: head = [1,2], pos = 0
+ * Output: true
+ * Explanation: There is a cycle in the linked list, where the tail connects to
+ * the 0th node.
+ *
+ *
+ * Example 3:
+ *
+ *
+ * Input: head = [1], pos = -1
+ * Output: false
+ * Explanation: There is no cycle in the linked list.
+ *
+ *
+ *
+ * Constraints:
+ *
+ *
+ * The number of the nodes in the list is in the range [0, 10^4].
+ * -10^5 <= Node.val <= 10^5
+ * pos is -1 or a valid index in the linked-list.
+ *
+ *
+ *
+ * Follow up: Can you solve it using O(1) (i.e. constant) memory?
+ *
+ */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func NewChain(nums []int) *ListNode {
-	result := &ListNode{}
-	tail := result
-
-	for _, num := range nums {
-		tail.Next = &ListNode{Val: num}
-		tail = tail.Next
-	}
-	return result.Next
-}
-
-//leetcode submit region begin(Prohibit modification and deletion)
+// @lc code=start
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -83,33 +81,40 @@ func NewChain(nums []int) *ListNode {
  *     Next *ListNode
  * }
  */
-func hasCycle(head *ListNode) bool {
-	if head == nil {
-		return false
+
+func NextN(head *ListNode, n int) *ListNode {
+	for i := 0; i < n; i++ {
+		if head == nil {
+			return nil
+		}
+		head = head.Next
 	}
+	return head
+}
 
-	slow := head
+func hasCycle(head *ListNode) bool {
 	fast := head
+	slow := head
 
-	for {
-		slow = slow.Next
-		fast = fast.Next
-		if fast != nil {
-			fast = fast.Next
+	for fast != nil && slow != nil {
+		fast = NextN(fast, 2)
+		if fast == nil {
+			return false
 		}
 
-		if slow == nil || fast == nil {
-			return false
-		} else if slow == fast {
+		slow = NextN(slow, 1)
+
+		if fast == slow {
 			return true
 		}
 	}
+
+	return false
 }
 
-//leetcode submit region end(Prohibit modification and deletion)
+// @lc code=end
 
-func TestLinkedListCycle(t *testing.T) {
-	assert.False(t, hasCycle(NewChain([]int{3, 2, 0, -4})))
-	assert.False(t, hasCycle(NewChain([]int{1, 2})))
-	assert.False(t, hasCycle(NewChain([]int{1})))
+func TestHasCycle(t *testing.T) {
+	head := MakeLink([]int{1, 2, 3, 4, 5})
+	assert.False(t, hasCycle(head))
 }
