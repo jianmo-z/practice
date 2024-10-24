@@ -1,63 +1,67 @@
-package MergeTwoSortedLists
+package leetcode
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-//将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
-//
-//
-//
-// 示例 1：
-//
-//
-//输入：l1 = [1,2,4], l2 = [1,3,4]
-//输出：[1,1,2,3,4,4]
-//
-//
-// 示例 2：
-//
-//
-//输入：l1 = [], l2 = []
-//输出：[]
-//
-//
-// 示例 3：
-//
-//
-//输入：l1 = [], l2 = [0]
-//输出：[0]
-//
-//
-//
-//
-// 提示：
-//
-//
-// 两个链表的节点数目范围是 [0, 50]
-// -100 <= Node.val <= 100
-// l1 和 l2 均按 非递减顺序 排列
-//
-// Related Topics 递归 链表 👍 2458 👎 0
+/*
+ * @lc app=leetcode.cn id=21 lang=golang
+ *
+ * [21] Merge Two Sorted Lists
+ *
+ * https://leetcode.cn/problems/merge-two-sorted-lists/description/
+ *
+ * algorithms
+ * Easy (67.14%)
+ * Likes:    3613
+ * Dislikes: 0
+ * Total Accepted:    1.9M
+ * Total Submissions: 2.8M
+ * Testcase Example:  '[1,2,4]\n[1,3,4]'
+ *
+ * You are given the heads of two sorted linked lists list1 and list2.
+ *
+ * Merge the two lists into one sorted list. The list should be made by
+ * splicing together the nodes of the first two lists.
+ *
+ * Return the head of the merged linked list.
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: list1 = [1,2,4], list2 = [1,3,4]
+ * Output: [1,1,2,3,4,4]
+ *
+ *
+ * Example 2:
+ *
+ *
+ * Input: list1 = [], list2 = []
+ * Output: []
+ *
+ *
+ * Example 3:
+ *
+ *
+ * Input: list1 = [], list2 = [0]
+ * Output: [0]
+ *
+ *
+ *
+ * Constraints:
+ *
+ *
+ * The number of nodes in both lists is in the range [0, 50].
+ * -100 <= Node.val <= 100
+ * Both list1 and list2 are sorted in non-decreasing order.
+ *
+ *
+ */
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func NewChain(nums []int) *ListNode {
-	result := &ListNode{}
-	tail := result
-
-	for _, num := range nums {
-		tail.Next = &ListNode{Val: num}
-		tail = tail.Next
-	}
-	return result.Next
-}
-
-//leetcode submit region begin(Prohibit modification and deletion)
+// @lc code=start
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -66,35 +70,60 @@ func NewChain(nums []int) *ListNode {
  * }
  */
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-	result := &ListNode{}
-	tail := result
+
+	head := &ListNode{}
+	tail := head
+
 	for list1 != nil || list2 != nil {
+
+		var node *ListNode
+
 		if list1 != nil && list2 != nil {
-			if list1.Val <= list2.Val {
-				tail.Next = &ListNode{Val: list1.Val}
+			if list1.Val < list2.Val {
+				node = list1
 				list1 = list1.Next
 			} else {
-				tail.Next = &ListNode{Val: list2.Val}
+				node = list2
 				list2 = list2.Next
 			}
-		} else if list1 != nil {
-			tail.Next = &ListNode{Val: list1.Val}
-			list1 = list1.Next
-		} else if list2 != nil {
-			tail.Next = &ListNode{Val: list2.Val}
+		} else if list1 == nil {
+			node = list2
 			list2 = list2.Next
+		} else if list2 == nil {
+			node = list1
+			list1 = list1.Next
 		}
+
+		node.Next = nil
+		tail.Next = node
 
 		tail = tail.Next
 	}
 
-	return result.Next
+	return head.Next
 }
 
-//leetcode submit region end(Prohibit modification and deletion)
+// @lc code=end
 
-func TestMergeTwoSortedLists(t *testing.T) {
-	assert.Equal(t, NewChain([]int{1, 1, 2, 3, 4, 4}), mergeTwoLists(NewChain([]int{1, 2, 4}), NewChain([]int{1, 3, 4})))
-	assert.Equal(t, NewChain([]int{}), mergeTwoLists(NewChain([]int{}), NewChain([]int{})))
-	assert.Equal(t, NewChain([]int{0}), mergeTwoLists(NewChain([]int{}), NewChain([]int{0})))
+func TestMergeTwoLists(t *testing.T) {
+	list1 := MakeLink([]int{1, 2, 4})
+	list2 := MakeLink([]int{1, 3, 4})
+
+	list := mergeTwoLists(list1, list2)
+
+	assert.Equal(t, []int{1, 1, 2, 3, 4, 4}, GetLink(list))
+
+	list1 = MakeLink([]int{})
+	list2 = MakeLink([]int{})
+
+	list = mergeTwoLists(list1, list2)
+
+	assert.Equal(t, []int{}, GetLink(list))
+
+	list1 = MakeLink([]int{})
+	list2 = MakeLink([]int{0})
+
+	list = mergeTwoLists(list1, list2)
+
+	assert.Equal(t, []int{0}, GetLink(list))
 }
