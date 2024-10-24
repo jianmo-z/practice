@@ -106,6 +106,7 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 // @lc code=end
 
 func TestMergeTwoLists(t *testing.T) {
+	// test 1
 	list1 := MakeLink([]int{1, 2, 4})
 	list2 := MakeLink([]int{1, 3, 4})
 
@@ -113,6 +114,7 @@ func TestMergeTwoLists(t *testing.T) {
 
 	assert.Equal(t, []int{1, 1, 2, 3, 4, 4}, GetLink(list))
 
+	// test 2
 	list1 = MakeLink([]int{})
 	list2 = MakeLink([]int{})
 
@@ -120,6 +122,7 @@ func TestMergeTwoLists(t *testing.T) {
 
 	assert.Equal(t, []int{}, GetLink(list))
 
+	// test 3
 	list1 = MakeLink([]int{})
 	list2 = MakeLink([]int{0})
 
