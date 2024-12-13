@@ -1,52 +1,67 @@
-package LetterCombinationsOfAPhoneNumber
+package leetcode
 
 import (
-	"github.com/stretchr/testify/assert"
+	"fmt"
 	"testing"
 )
 
-//给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。
-//
-// 给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。
-//
-//
-//
-//
-//
-// 示例 1：
-//
-//
-//输入：digits = "23"
-//输出：["ad","ae","af","bd","be","bf","cd","ce","cf"]
-//
-//
-// 示例 2：
-//
-//
-//输入：digits = ""
-//输出：[]
-//
-//
-// 示例 3：
-//
-//
-//输入：digits = "2"
-//输出：["a","b","c"]
-//
-//
-//
-//
-// 提示：
-//
-//
-// 0 <= digits.length <= 4
-// digits[i] 是范围 ['2', '9'] 的一个数字。
-//
-// Related Topics 哈希表 字符串 回溯 👍 1954 👎 0
+/*
+ * @lc app=leetcode.cn id=17 lang=golang
+ *
+ * [17] Letter Combinations of a Phone Number
+ *
+ * https://leetcode.cn/problems/letter-combinations-of-a-phone-number/description/
+ *
+ * algorithms
+ * Medium (60.86%)
+ * Likes:    2963
+ * Dislikes: 0
+ * Total Accepted:    992.3K
+ * Total Submissions: 1.6M
+ * Testcase Example:  '"23"'
+ *
+ * Given a string containing digits from 2-9 inclusive, return all possible
+ * letter combinations that the number could represent. Return the answer in
+ * any order.
+ *
+ * A mapping of digits to letters (just like on the telephone buttons) is given
+ * below. Note that 1 does not map to any letters.
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: digits = "23"
+ * Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+ *
+ *
+ * Example 2:
+ *
+ *
+ * Input: digits = ""
+ * Output: []
+ *
+ *
+ * Example 3:
+ *
+ *
+ * Input: digits = "2"
+ * Output: ["a","b","c"]
+ *
+ *
+ *
+ * Constraints:
+ *
+ *
+ * 0 <= digits.length <= 4
+ * digits[i] is a digit in the range ['2', '9'].
+ *
+ *
+ */
 
-//leetcode submit region begin(Prohibit modification and deletion)
+// @lc code=start
 
-var keybord = map[string]string{
+var letterMap = map[string]string{
 	"2": "abc",
 	"3": "def",
 	"4": "ghi",
@@ -58,30 +73,31 @@ var keybord = map[string]string{
 }
 
 func letterCombinations(digits string) []string {
-	if len(digits) == 0 {
-		return []string{}
-	}
-
-	return deep("", digits)
+	return allLetter("", digits)
 }
 
-func deep(prefix, digits string) []string {
-	if len(digits) == 0 {
+func allLetter(prefix, digits string) []string {
+	result := []string{}
+	if digits == "" {
+		if prefix == "" {
+			return nil
+		}
 		return []string{prefix}
 	}
 
-	var result []string
-	for _, ele := range keybord[string(digits[0])] {
-		result = append(result, deep(prefix+string(ele), digits[1:])...)
+	letter := letterMap[digits[0:1]]
+	for i := 0; i < len(letter); i++ {
+		res := allLetter(prefix+string(letter[i]), digits[1:])
+
+		result = append(result, res...)
 	}
 
 	return result
 }
 
-//leetcode submit region end(Prohibit modification and deletion)
+// @lc code=end
 
-func TestLetterCombinationsOfAPhoneNumber(t *testing.T) {
-	assert.Equal(t, []string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}, letterCombinations("23"))
-	assert.Equal(t, []string{}, letterCombinations(""))
-	assert.Equal(t, []string{"a", "b", "c"}, letterCombinations("2"))
+func TestLetterCombinations(t *testing.T) {
+	res := letterCombinations("23")
+	fmt.Println(res)
 }
