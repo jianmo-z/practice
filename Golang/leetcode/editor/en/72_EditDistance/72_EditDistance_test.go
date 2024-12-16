@@ -3,7 +3,6 @@ package leetcode
 import (
 	"testing"
 
-	"github.com/samber/lo"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -69,22 +68,67 @@ import (
  */
 
 // @lc code=start
+
+var record = map[string]int{}
+
+func SetRecord(word1, word2 string, dis int) {
+	setRecord(word1, word2, dis)
+	setRecord(word2, word1, dis)
+}
+
+func setRecord(word1, word2 string, dis int) {
+	oldDis, has := record[word1+"_"+word2]
+	if (has && oldDis > dis) || !has {
+		record[word1+"_"+word2] = dis
+	}
+}
+
 func minDistance(word1 string, word2 string) int {
 	if word1 == "" || word2 == "" {
-		return lo.Max([]int{len(word1), len(word2)})
+		return len(word1) + len(word2)
 	}
 
 	if word1[0] == word2[0] {
 		return minDistance(word1[1:], word2[1:])
 	}
 
-	return lo.Min(
-		[]int{
-			minDistance(word1[:], word2[1:]) + 1,
-			minDistance(word1[1:], word2[1:]) + 1,
-			minDistance(word1[1:], word2[:]) + 1,
-		},
-	)
+	var insert int
+
+	if dis, has := record[word1[:]+"_"+word2[1:]]; has {
+		insert = dis
+	} else {
+		insert = minDistance(word1[:], word2[1:]) + 1
+		SetRecord(word1[:], word2[1:], insert)
+	}
+
+	var replace int
+	if dis, has := record[word1[1:]+"_"+word2[1:]]; has {
+		replace = dis
+	} else {
+		replace = minDistance(word1[1:], word2[1:]) + 1
+		SetRecord(word1[1:], word2[1:], replace)
+	}
+
+	var remove int
+
+	if dis, has := record[word1[1:]+"_"+word2[:]]; has {
+		remove = dis
+	} else {
+		remove = minDistance(word1[1:], word2[:]) + 1
+		SetRecord(word1[1:], word2[:], remove)
+	}
+
+	minDis := insert
+
+	if replace < minDis {
+		minDis = replace
+	}
+
+	if remove < minDis {
+		minDis = remove
+	}
+
+	return minDis
 }
 
 // @lc code=end
@@ -98,4 +142,10 @@ func TestMinDistance(t *testing.T) {
 
 	distance = minDistance("intention", "execution")
 	assert.Equal(t, 5, distance)
+
+	distance = minDistance("dinitrophenylhydrazine", "acetylphenylhydrazine")
+	assert.Equal(t, 6, distance)
+
+	distance = minDistance("park", "spake")
+	assert.Equal(t, 3, distance)
 }
