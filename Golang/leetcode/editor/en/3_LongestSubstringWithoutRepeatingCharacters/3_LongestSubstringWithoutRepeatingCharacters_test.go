@@ -44,11 +44,12 @@ import (
 //
 // Related Topics 哈希表 字符串 滑动窗口 👍 7677 👎 0
 
-//leetcode submit region begin(Prohibit modification and deletion)
+// leetcode submit region begin(Prohibit modification and deletion)
 func lengthOfLongestSubstring(s string) int {
 	chSet := map[byte]int{}
 	maxLength := 0
 	left := 0
+
 	for index := range s {
 		pos, ok := chSet[s[index]]
 		if ok && pos >= left {
