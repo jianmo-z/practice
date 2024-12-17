@@ -1,75 +1,92 @@
-package MaximumSubarray
+/*
+ * @lc app=leetcode.cn id=53 lang=golang
+ *
+ * [53] Maximum Subarray
+ *
+ * https://leetcode.cn/problems/maximum-subarray/description/
+ *
+ * algorithms
+ * Medium (55.78%)
+ * Likes:    6864
+ * Dislikes: 0
+ * Total Accepted:    1.9M
+ * Total Submissions: 3.5M
+ * Testcase Example:  '[-2,1,-3,4,-1,2,1,-5,4]'
+ *
+ * Given an integer array nums, find the subarray with the largest sum, and
+ * return its sum.
+ *
+ *
+ * Example 1:
+ *
+ *
+ * Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+ * Output: 6
+ * Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+ *
+ *
+ * Example 2:
+ *
+ *
+ * Input: nums = [1]
+ * Output: 1
+ * Explanation: The subarray [1] has the largest sum 1.
+ *
+ *
+ * Example 3:
+ *
+ *
+ * Input: nums = [5,4,-1,7,8]
+ * Output: 23
+ * Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
+ *
+ *
+ *
+ * Constraints:
+ *
+ *
+ * 1 <= nums.length <= 10^5
+ * -10^4 <= nums[i] <= 10^4
+ *
+ *
+ *
+ * Follow up: If you have figured out the O(n) solution, try coding another
+ * solution using the divide and conquer approach, which is more subtle.
+ *
+ */
+
+package leetcode
 
 import (
-	"github.com/stretchr/testify/assert"
 	"math"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-//给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
-//
-// 子数组 是数组中的一个连续部分。
-//
-//
-//
-// 示例 1：
-//
-//
-//输入：nums = [-2,1,-3,4,-1,2,1,-5,4]
-//输出：6
-//解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。
-//
-//
-// 示例 2：
-//
-//
-//输入：nums = [1]
-//输出：1
-//
-//
-// 示例 3：
-//
-//
-//输入：nums = [5,4,-1,7,8]
-//输出：23
-//
-//
-//
-//
-// 提示：
-//
-//
-// 1 <= nums.length <= 10⁵
-// -10⁴ <= nums[i] <= 10⁴
-//
-//
-//
-//
-// 进阶：如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的 分治法 求解。
-// Related Topics 数组 分治 动态规划 👍 4723 👎 0
-
-//leetcode submit region begin(Prohibit modification and deletion)
+// @lc code=start
 func maxSubArray(nums []int) int {
-	result := math.MinInt
-	sum := 0
-	for _, num := range nums {
-		sum += num
-		if result < sum {
-			result = sum
+	maxSub := math.MinInt
+	curSum := 0
+
+	for i := 0; i < len(nums); i++ {
+		if curSum < 0 {
+			curSum = 0
 		}
 
-		if sum < 0 {
-			sum = 0
+		curSum += nums[i]
+		if curSum > maxSub {
+			maxSub = curSum
 		}
 	}
 
-	return result
+	return maxSub
 }
 
-//leetcode submit region end(Prohibit modification and deletion)
+// @lc code=end
 
-func TestMaximumSubarray(t *testing.T) {
-	assert.Equal(t, 1, maxSubArray([]int{1}))
+func TestMaxSubArray(t *testing.T) {
 	assert.Equal(t, 6, maxSubArray([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4}))
 	assert.Equal(t, 23, maxSubArray([]int{5, 4, -1, 7, 8}))
+	assert.Equal(t, -1, maxSubArray([]int{-1}))
 }
