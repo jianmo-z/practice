@@ -48,7 +48,7 @@ import (
 )
 
 // @lc code=start
-func dailyTemperatures(temperatures []int) []int {
+func dailyTemperaturesByFor(temperatures []int) []int {
 
 	res := make([]int, len(temperatures))
 
@@ -59,6 +59,36 @@ func dailyTemperatures(temperatures []int) []int {
 				break
 			}
 		}
+	}
+
+	return res
+}
+
+// @lc code=start
+func dailyTemperatures(temperatures []int) []int {
+
+	//
+	maxTemp := make([]int, 0, len(temperatures))
+	res := make([]int, len(temperatures))
+
+	for i := 0; i < len(temperatures); i++ {
+		if len(maxTemp) == 0 ||
+			temperatures[maxTemp[len(maxTemp)-1]] >= temperatures[i] {
+
+			maxTemp = append(maxTemp, i)
+			continue
+		}
+
+		for len(maxTemp) > 0 &&
+			temperatures[maxTemp[len(maxTemp)-1]] < temperatures[i] {
+
+			idx := maxTemp[len(maxTemp)-1]
+			maxTemp = maxTemp[:len(maxTemp)-1]
+
+			res[idx] = i - idx
+		}
+
+		maxTemp = append(maxTemp, i)
 	}
 
 	return res
