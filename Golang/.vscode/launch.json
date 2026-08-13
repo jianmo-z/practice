@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "debug",
-            "program": "G:/GitHub/practice/Golang",
+            "program": "/Users/jianmo/Code/github/practice/Golang",
         }
     ]
 }
